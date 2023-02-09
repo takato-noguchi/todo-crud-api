@@ -4,8 +4,8 @@ class V1::PostsController < ApplicationController
     render json: @posts 
   end
 
-  def create 
-    post = Post.new(content: params[:post][:content])
+  def create
+    post = Post.new(post_params)
     if post.save
       render json: '作成に成功しました', status: 200
     else
@@ -20,5 +20,11 @@ class V1::PostsController < ApplicationController
       render json: @post, status: 500
     end
   end
-  
+
+  private 
+
+  def post_params
+    params.require(:post).permit(:title, :content)
+  end
+
 end

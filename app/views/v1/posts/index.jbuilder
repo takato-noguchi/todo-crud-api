@@ -1,3 +1,3 @@
 json.posts @posts do |post|
-  json.extract! post, :id, :content, :created_at
+  json.extract! post, :id, :content, :title, :created_at
 end
